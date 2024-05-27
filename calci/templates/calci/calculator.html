@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<title>Calculator</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<srcipt src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></srcipt>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+  			integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  			crossorigin="anonymous">
+  	</script>
+	<style>
+		
+		textarea {
+			margin:0;
+			height:50px;
+			width:250px;
+			float:right;
+			display: block;
+			border-radius: 10px;
+		}
+		table {
+			margin:0px;
+			margin-top:50px;
+			margin-left:900px;
+		}
+		button {
+			height: 60px;
+			width: 60px;
+			cursor: pointer;
+		}
+		#opac {
+			opacity: 0.25;
+			margin: auto;
+		
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron">
+			<h1 class="display-2"  ><svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-calculator" viewBox="0 0 16 16">
+				<path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
+				<path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-2zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-4z"/>
+			  </svg><i><b>Calculator App</b></i></h1>
+			<hr class="my-1">
+		</div>
+		<form id="form1"name="form1">
+		<textarea id="resultArea" class="textview"  readonly rows="1" cols="21"></textarea>
+	    </form>
+		    <div id="opac"></div>
+		    <table id="table_cl">
+			    <tr >
+				    <td></td>
+				    <td></td>
+				    <td><button id="clrTxt" class="btn btn-danger" onclick ="clr()">C</button></td>
+				    <td><button id="del" class="btn btn-default"><i class="material-icons" style="color:red" onclick ="backspace()">backspace</i></button></td>
+			    </tr>
+			    <tr >
+				    <td><button id="num7"  class="btn btn-default" onclick = "insert(7)">7</button></td>
+				    <td><button id="num8" class="btn btn-default" onclick = "insert(8)">8</button></td>
+				    <td><button id="num9" class="btn btn-default" onclick = "insert(9)">9</button></td>
+				    <td><button id="op3" class="btn btn-info" onclick = "insert('/')">&div;</button></td>
+			    </tr>
+			    <tr>
+				    <td><button id="num4" class="btn btn-default" onclick = "insert(4)">4</button></td>
+				    <td><button id="num5" class="btn btn-default" onclick = "insert(5)">5</button></td>
+				    <td><button id="num6" class="btn btn-default" onclick = "insert(6)">6</button></td>
+				    <td><button id="op2" class="btn btn-info" onclick = "insert('*')">&times;</button></td>
+			    </tr>
+			    <tr>
+				    <td><button id="num1" type="button" class="btn btn-default" value="1" onclick="insert(1)">1</button></td>
+				    <td><button id="num2" class="btn btn-default" onclick = "insert(2)">2</button></td>
+				    <td><button id="num3" class="btn btn-default" onclick = "insert(3)">3</button></td>
+				    <td><button id="op1" class="btn btn-info" onclick = "insert('-')">&minus;</button></td>
+				</tr>
+			    <tr>
+				    <td><button id="decp" class="btn btn-info" onclick = "insert('.')">.</button></td>
+				    <td><button id="num0" class="btn btn-default" onclick = "insert(0)">0</button></td>
+				    <td><button id="eq" value="=" class="btn btn-success" onclick = "equal()">=</button></td>
+				    <td><button id="op0" class="btn btn-info" onclick = "insert('+')">&plus;</button></td>
+			    </tr>
+		    </table>
+<script>
+  
+console.log("hello1")	
+const number = document.form1[0];
+console.log(number);
+function insert(num) {
+return number.value += '' + num;		
+}
+console.log("hello3")	
+//function val(num) {
+//let n = num.value;
+//document.getElementById("resultArea").innerHTML = n;
+//}
+
+//$(document).ready(function(){
+	//$("#num1").click(function(){
+	//	document.getElementById("resultArea").innerHTML= num1;	
+	//});
+//});
+
+function backspace() {  
+    var exp = document.getElementById("resultArea").value;  
+    document.getElementById("resultArea").value = exp.toString().substring(0, exp.length - 1); 
+} 
+
+function equal()  {  
+var exp = document.getElementById("resultArea").value;  
+if(exp) {  
+   document.getElementById("resultArea").value = eval(exp)  
+}  
+}  
+function clr() {
+	document.getElementById("resultArea").value = ""
+}
+</script>
+</body>
+</html>
