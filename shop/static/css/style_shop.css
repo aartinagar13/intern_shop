@@ -1,0 +1,59 @@
+
+.col-md-3{
+  display:inline-block;
+  margin-left:-4px;
+}
+.carousel-indicators .active{
+  background-color:blue;
+}
+.col-md-3 img{
+  max-width:287px;
+  max-height:355px;
+}
+body .carousel-indicator li{
+  background-color:white;
+}
+body .carousel-indicator{
+  bottom:0;
+}
+ 
+body .no-paddng{
+  padding-left:0;
+  padding-right:0;
+}
+body .carousel-control-prev-icon,
+body .carousel-control-next-icon{
+  background-color:black;
+ 
+}
+body .carousel-control-prev{
+  left: 0;
+}
+body .carousel-control-next{
+  right:0;
+}
+.d-flex{
+  margin-left:400px;
+}
+#about_card{
+  padding:0;
+  margin:0;
+  margin-top:50px;
+  margin-left:500px;
+}
+#m_form{
+  width:600px;
+  height:130px;
+  margin:auto; 
+  border: 1px,solid,black;
+}
+#user{
+  width:330px;
+  height:25px; 
+  margin-top:20px;
+  margin-bottom:20px;
+}
+#pwd{
+  width:330px;
+  height:25px;
+}

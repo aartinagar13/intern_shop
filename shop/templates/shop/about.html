@@ -1,0 +1,21 @@
+{%extends 'shop/base.html'%}
+{%block title%}About page {% endblock title%}
+{%load static%}
+{%block body%}      
+<div id="about_card" class="card" style="width: 25rem;">
+    <img src= "{% static 'shop/images/about.jpg'%}"class="card-img-top" alt="...">
+    <div class="card-body">
+      <center><h3 class="card-title"><i>Girly Site</i></h3></center>
+      <h5 class="card-title"></h5>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Email: mailto:abc@domain.com</li>
+    <li class="list-group-item">Phone no:- 1234567890</li>
+    <li class="list-group-item">Telephone :-072722-00000</li>
+    <li class="list-group-item">Location :-MNQ Colony,Indore</li>
+    <li class="list-group-item"><img src= "{% static 'shop/images/contact.jpg'%}"class="card-img-top" alt="..."></li>
+  </ul>
+</div>
+</div>
+</div>
+</div>
+{%endblock %}

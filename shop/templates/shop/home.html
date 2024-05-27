@@ -1,0 +1,165 @@
+{% extends 'shop/base.html' %}
+{% block title %}Home page {% endblock title %}
+{%load static%}
+{% block cartest %}
+ <li>Test1</li>
+ <li>Test2</li>
+{% endblock %}
+{% block body %}
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+<div class="container">
+<div id="#demo" class="carousel-slide my-3" data-ride="carousel">
+    <ul class= "carousel-indicators">
+      <li data-target ="#demo" data-slide-to ="0" class ="active"></li>
+      {% for i in range %}
+      <li data-target ="#demo" data-slide-to ="{{i}}"></li>
+      {% endfor %}
+    </ul>
+    <!-- Test Test-->
+ <!-- slide show starts here-->
+<div class="container carousel-inner no-padding">
+      <div class="carousel-item active ">
+        
+        {% for i in product%}
+        <div class= "col-xs-3 col-sm-3 col-md-3" style="padding:0; margin-left:40px;">
+           <div class="card" style="width: 18rem; margin-left:30px">
+            <img class="card-img-top" src="/media/{{i.image}}"  style="height:200px; width:100%; "  alt="Card image cap">
+             <div class="card-body">
+                <h5 class="card-title" id="namepr{{i.id}}">{{i.product_name}}</h5>
+                <p class="card-text">{{i.desc|slice:"0:53"}}</p>
+                <span id="divpr{{i.id}}" class='divpr'>
+                <button id="pr{{i.id}}"  class="btn btn-primary cart ">Add to cart</button>
+                </span>
+                <a href="/shop/productview/{{i.id}}"><button id="qv{{i.id}}" class="btn btn-tertiary cart">Shop Now
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+              </svg> </button></a>
+            </div>
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
+      </div><div class="carousel-item">  
+        {% endif %}
+        {% endfor %}
+    </div>    
+</div>
+  <a class =" carousel-control-prev" href="#demo" data-slide="prev">
+        <span class ="carousel-control-prev-icon"></span>
+  </a>
+  <a class ="carousel-control-next" href="#demo" data-slide="next">
+        <span class ="carousel-control-next-icon"></span>
+  </a>
+  </div>
+</div>
+
+<script>
+ // $(document).on('click','.cart',function(){
+ //   var id = $(this).attr('id');
+  //  $('#'+id).html('<button>-</button> <span></span>')
+ //   alert(id)
+//  })
+  console.log("hello1");
+   //finding the cart items 
+   //null then empty
+   if(localStorage.getItem('cart') == null){
+     var cart ={};
+     console.log("hello2");
+   }
+   //if available return
+   else
+   {  
+      cart =JSON.parse(localStorage.getItem('cart'));
+      console.log("hello3");
+   }
+    console.log("hello4");
+
+   //add to cart 
+   //$('.cart').click(function(){
+  $('.divpr').on('click','button.cart',function(){
+    console.log("clicked");
+    var idstr = this.id.toString();
+    console.log(idstr);
+    console.log("hello5");
+   //add the incremnted data to the cart
+    if (cart[idstr] !=undefined){
+    qty = cart[idstr] + 1;
+    name ="My item";
+    cart[idstr] =cart[idstr]+1;
+    }
+    else{
+      qty = cart[idstr] + 1;
+      name ="My item";
+      cart[idstr] = [qty, name];
+    };
+    console.log(cart);
+    localStorage.setItem('cart',JSON.stringify(cart));
+    document.getElementById('cart').innerHTML = Object.keys(cart).length;
+    console.log(cart);
+    });
+
+    $('#popcart').popover('show');
+    document.getElementById("popcart").setAttribute('data-content','<h5>cart for your items in shopping cart</h5>');
+    var popStr = "";
+    function updatePopover(){
+      popStr = popStr + "<h6>cart for your items in shopping cart </h6>"
+      var i=1;
+      for(var item in cart){
+        popStr=popStr+ "<b>"+ i +"</b>"
+        popStr = popStr +document.getElementById("name"+ item) +"Qty: "+cart[item]+ '<br>'
+        i=i+1;
+        }
+        $('#popcart').popover('show');
+     };
+    updatePopover(cart);
+    updateCart(cart);
+    popStr =popStr + "</div><a href='/shop/checkout' ><button class='btn btn-primary' id='clearCart'>Checkout</button></a> <button class='btn btn-primary' id='clearCart'>Clear Cart</button></a>"
+    document.getElementById("popcart").setAttribute("data-content",popStr)
+    updatePopover(cart);  
+   
+    function clearCart(){
+       cart= JSON.parse(localStoragegetItem('cart'));
+       for( var item in cart){
+      document.getElementById('div'+item).innerHTML='<button id="+ item+" class="btn btn-primary cart ">Add to cart</button>'
+      } 
+      localStorage.clear();
+      cart ={};
+    };
+
+    function updateCart(cart){
+    var sum=0;
+    for (var item in cart){
+      sum=sum+cart[item]
+      $('.divpr').html("<button id='minus"+item[0]+"' class= 'btn btn-primary minus'>-</button><span id='val"+item+"''>"+cart[item]+"</span><button id='plus"+item[0]+"'class='btn btn-primary plus'>+</button>");
+      //document.getElementById('divpr').innerHTML ="<button id='minus"+item+"' class= 'btn btn-primary minus'>-</button><span id='val"+item+"''>"+cart[item]+"</span><button id='plus"+item+"'class='btn btn-primary plus'>+</button>";
+    }
+      localStorage.setItem('cart',JSON.stringify(cart));
+      document.getElementById('cart').innerHTML = sum;
+    } 
+
+    //- from cart
+    $('.divpr').on("click","button.minus",function(){
+        a = this.id.slice(7,)
+        cart['pr'+a] = cart["pr"+a]-1;
+        cart["pr"+a] = Math.max(0,cart["pr"+a]);
+        document.getElementById('valpr'+a).innerHTML =cart["pr"+a]
+        updateCart(cart);
+    });
+    //+ from cart
+    $('.divpr').on("click","button.plus",function(){
+        a = this.id.slice(6,)
+        cart['pr'+a] = cart['pr'+a]+1;
+        document.getElementById('valpr'+a).innerHTML =cart["pr"+a]
+        updateCart(cart);
+    });
+   
+</script>
+{%endblock %}
+
+  

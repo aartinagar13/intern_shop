@@ -1,0 +1,65 @@
+{%extends 'shop/base.html'%}
+{%block title%}{{product.product_name}}-My Awesome Cart{% endblock title%}
+{%load static%}
+{%block body%}  
+<div class="container my-4">
+    <div class="row">
+    <div class="col-md-4">
+    <div class="row">
+      <img src="/media/{{product.image}}" style="width:200px:height:300px;">
+    </div>
+    <br>
+    <div class="row  ">
+        <button class="btn btn-primary  mx-2">Buy Now <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bag-heart-fill" viewBox="0 0 16 16">
+          <path d="M11.5 4v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5ZM8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1Zm0 6.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z"/>
+        </svg></button>
+        <button id = "pr{{product.id}}"class="btn btn-tertiary cart" style="color:white"><a href="/shop/addcart/{{product.id}} ">Add to cart</button>
+    </div>
+    </div>  
+  <div class="row-md-2 ">
+    <h5>Product:-<i>{{product.product_name}}</i></h5>
+    <p><b>Rs.{{product.price}}</b></p> 
+    <p> Publition date:-<i>{{product.pub_date}}</i></p>
+    <p> {{product.desc}}</p>
+  </div>
+  </div>
+</div>
+<script>
+  console.log("hello");
+  //finding the cart items 
+  //null then empty
+  if(localStorage.getItem('cart') == null){
+    var cart ={};
+  }
+  //if available return
+  else
+  {  
+  cart =JSON.parse(localStorage.getItem('cart'));
+  document.getElementById('cart').innerHTML = Object.keys(cart).length
+  }
+  //add to cart 
+  $('.cart').click(function(){
+  console.log("clicked");
+  var idstr = this.id.toString();
+  console.log(idstr);
+  //add the incremnted data to the cart
+  if (cart[idstr] !=undefined){
+    cart[idstr] =cart[idstr] +1;
+  }
+  else{
+     cart[idstr] = 1;
+  };
+  updateCart(cart)
+  console.log(cart);
+  localStorage.setItem('cart',JSON.stringify(cart));
+  document.getElementById('cart').innerHTML = Object.keys(cart).length;
+  });
+
+  function updateCart(cart){
+    for (var item in cart){
+      document.getElementById('div'+ item).innerHTML ="<button id='minus"+item+"' class= 'btn btn-primary minus'>-</button><span id='val"+item+"''>"+cart[item]+"</span><button id='plus"+item+"'class='btn btn-primary plus'>+</button>";
+    }
+  }  
+
+</script>
+{% endblock %}
