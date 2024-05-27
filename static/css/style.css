@@ -1,0 +1,134 @@
+body{
+    background-size: 100% 600px;
+}
+
+#user{
+    width:330px;
+    height:25px; 
+    margin-top:20px;
+    margin-bottom:20px;
+}
+#pwd{
+    width:330px;
+    height:25px;
+}
+#m_form{
+    width:600px;
+    height:130px;
+    margin:auto;
+   
+}
+#r_form{
+    width:600px;
+    height:130px;
+    margin:auto;
+   
+}
+h2{
+    text-align: center;
+    font-family:verdana;
+    font-size: 30px;
+    color:white;
+}
+#btn{
+    width:70px;
+    height:25px;
+    margin-left:270px;
+    margin-top:25px;
+}
+
+#npwd{
+    width:330px;
+    height:25px; 
+    margin-top:20px;
+    margin-bottom:20px;
+}
+#cpwd{
+    width:330px;
+    height:25px;
+}
+#a_rst{
+    text-decoration: none;
+}
+ul{
+    text-decoration: none;
+    padding:0;
+    margin:0;
+}
+#i_li{
+    width:200px;
+    height:20px;
+    text-decoration: none;
+}
+#btn4{
+    width:70px;
+    height:25px;
+    margin-left:270px;
+    margin-top:25px;
+}
+#nav2{
+    width:100%;
+    height:50px;
+    background-color:cyan;
+    margin-top:-25px;
+}
+#nav4{
+    width:100%;
+    height:50px;
+    background-color:cyan;
+    margin-top:-25px;
+}
+#m_hd{
+    text-align: center;
+    font-family:verdana;
+    font-size: 30px;
+    color: black;
+}
+#nav3{
+    width:100%;
+    height: 30px;
+}
+#bdy4{
+    background-color: plum;
+}
+#l_div{
+    margin:auto;  
+    width: 620px;
+    height:200px;
+    margin-top:-30;
+    background-color: wheat;
+    border-radius: 35px 35px;
+}
+#r_div{
+    margin:auto;  
+    width: 620px;
+    height:200px;
+    margin-top:-30;
+    background-color: rgb(240, 216, 216);
+    border-radius: 25px 25px;
+}
+#bdy5{
+    background-color: lightskyblue;
+}
+#i_div{
+    width: 100%;
+    height:80px;
+    padding:0;
+    margin:0;
+    background-color: grey;
+}
+#btn2{
+    width:100px;
+    height:25px;
+}
+#ii_div{
+    color:black;
+}
+#re_hd{
+    text-align: center;
+    font-family:verdana;
+    font-size: 30px;
+    color: black;
+}
+/*registration page*/
+

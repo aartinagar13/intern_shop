@@ -1,0 +1,49 @@
+{% extends 'htmlfile/base.html' %}
+{% block title %} {% endblock title %}
+{% block content %} {% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css'%}" />
+<nav id="nav2">
+<h2 id="m_hd">LOGIN PAGE</h2>
+</nav>
+<body id ="bdy4" >
+      <i> <h4><center> LOGIN</center></h4></i>
+    <div id ="l_div"> 
+    
+       <form method="POST" action="" id="m_form" >
+        {% csrf_token %}
+        <div>
+        Username:
+        <input
+              type="email"
+              id="user"
+              name="username"
+              placeholder="username"
+         />
+         <span id="u_user"  class ="u_span"
+         >
+         <span/>
+       </div>
+       <div>
+        Password:
+        <input 
+            type="password"
+            id="pwd"
+           name="password"
+           placeholder="password"
+        />
+        <span id="u_pwd" class ="p_span" 
+        >
+        <span/>
+        <div class="mt-3">
+          <button
+            type="submit"
+            value="LOGIN"
+            id="btn" >
+            LOGIN
+          </button>
+      </div>
+      </form>
+    </div>
+  </body>
+  <script src="{% static 'js/form_validate1.js' %}"></script>
+        {% endblock content%}

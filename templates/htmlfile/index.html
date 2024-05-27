@@ -1,0 +1,23 @@
+{% extends 'htmlfile/base.html' %}
+{% block title %} {% endblock title %}
+{% block content %} {% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css'%}" />
+<nav id="nav2">
+<h2 id="m_hd">TUTORIAL</h2>
+</nav>
+{% csrf_token %}
+<body id="bdy1">
+<div>
+    <div id="i_div">
+    <ul>
+        <li id="i_li"><button id="btn2"><a id="a_rst"  href="/index">Home</a></button></li>
+        <li id="i_li"><button id="btn2"><a id="a_rst"  href="/login">Login</a></button></li>
+        <li id="i_li"><button id="btn2"><a id="a_rst"  href="/registration">Register</a></button></li>
+        <li id="i_li"><button id="btn2"><a  id="a_rst" href="/contactus">Contact Us</a></button></li>
+    </ul>  
+    <div id="ii_div">HERE IS THE TUTORIAL</div> 
+    </div>
+</div>
+<img src="{% static 'images/tutorial1.jpg' %}" height="440px" width="100%" margin-left="300px"/>  
+</body>
+{% endblock content%}

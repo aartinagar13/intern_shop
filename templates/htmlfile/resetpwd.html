@@ -1,0 +1,50 @@
+{% extends 'htmlfile/base.html' %}
+{% block title %} {% endblock title %}
+{% block content %} {% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css'%}" />
+<nav id="nav2">
+<h2 id="m_hd">RESET PASSWORD PAGE</h2>
+</nav>
+<body id="bdy5">
+      <i> <center><h4>Reset Password</h4></center></i>
+    <div id="r_div">
+       <form method ="POST" action="" id="r_form">
+        {% csrf_token %}
+        <div>
+        New Password:
+        <input
+           type="password"
+           id="npwd"
+           name="npassword"
+           placeholder="password" 
+          />
+          <span id="n_pwd" 
+          >
+          <span/>
+         </div>
+        
+         <div>
+        Confirm Password:
+         <input 
+            type="password"
+            id="cpwd"
+            name="copassword"
+            placeholder="password"
+        /> <span id="c_pwd" 
+        >
+        <span/>
+        </div> 
+       
+        <div class="mt-3">
+            <button
+              type="submit"
+              value="submit"
+              id="btn4"
+              >SUBMIT
+            </button>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script src="{% static 'js/reset_validate.js' %}"></script>
+        {% endblock content%}
